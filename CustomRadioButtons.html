@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Done by Peter (based on Saijas and Inkas work :V :) ) 5/18 -->
+  <head>
+      <title>Custom Radio Buttons</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/CustomRadioButtons.css') }}">
+
+      <script src="script/CustomRadioButtons.js"></script>
+      <link rel="stylesheet" type="text/css" href="/css/CustomRadioButtons.css">
+  </head>
+
+  <body onload="setInitValueOnPageLoad()">
+    <div class="container">
+      <h2>My Custom Radio Buttonz</h2>
+
+      <form>
+        !{{form.value.choices}}?
+          {% for choice in form.value.choices %}
+<!---            <div class="cc-selector">
+              <input id="myRadioButton{{ choice[0] }}" type="radio" name="usersChoice" value="{{ choice[1] }}" onclick="setAnswerValue({{ choice[0] }})" />
+    	        <label class="radioButton-cc myRadioButton"for="myRadioButton{{ choice[0] }}">{{ choice[1] }}</label>
+            </div>--->
+            {{choice}}
+          {% endfor %}
+
+      </form>
+    </div>
+  </body>
+
+</html>
