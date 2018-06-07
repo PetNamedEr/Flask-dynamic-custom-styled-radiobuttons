@@ -12,9 +12,6 @@ class RadioFieldForm(Form):
             self.value.choices.append((i,choice))
             i += 1
 
-    def getChoices(self):
-        return self.value.choices
-
 customRadioFieldChoices = ["Paul","John","Ringo","George"]
 
 @app.route('/', methods=['GET', 'POST'])
@@ -24,8 +21,7 @@ def index():
         form.setChoices(customRadioFieldChoices)
         return render_template('CustomRadioButtons.html',form=form)
     if request.method == 'POST':
-        #return str(request.form)
-        return "You chose: " + request.form['chosenValue']
+        return render_template('Results.html',result=request.form['chosenValue'])
 
 @app.route('/addNewRadioFieldChoice', methods=['GET', 'POST'])
 def addCustomRadioFieldChoice():
