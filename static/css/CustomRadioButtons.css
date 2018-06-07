@@ -9,6 +9,45 @@ body {
   text-align: center;
 }
 
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: forestgreen;
+    color: black;
+    border: 2px solid #4CAF50;
+    font-size: 20px;
+}
+
+.button1:hover {
+    background-color: lawngreen;
+    color: white;
+    font-size: 30px;
+}
+
+.button2 {
+    background-color: darkcyan;
+    color: white;
+    border: 2px solid #4CAF50;
+    font-size: 10px;
+
+  }
+.button2:hover {
+    background-color: blue;
+    color: black;
+    font-size: 20px;
+}
+
  .cc-selector input{
      margin:0;padding:0;
      -webkit-appearance:none;
@@ -17,8 +56,8 @@ body {
  }
 
  .myRadioButton{
-   font-size: 30px;
-   background-color:deeppink;
+   font-size: 15px;
+   background-color: hotpink;
    padding: 20px;
  }
 
@@ -27,7 +66,7 @@ body {
    opacity: .9;}
 
  .cc-selector input:checked +.myRadioButton-cc{
-   background-color:green;
+   background-color: purple;
      -webkit-filter: none;
         -moz-filter: none;
              filter: none;
@@ -42,13 +81,26 @@ body {
      -webkit-transition: all 100ms ease-in;
         -moz-transition: all 100ms ease-in;
              transition: all 100ms ease-in;
-     -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
-        -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
-             filter: brightness(1.8) grayscale(1) opacity(.7);
+     -webkit-filter: brightness(1.8) opacity(.5);
+        -moz-filter: brightness(1.8) opacity(.5);
+             filter: brightness(1.8) opacity(.5);
  }
 
  .myRadioButton-cc:hover{
-     -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
-        -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
-             filter: brightness(1.2) grayscale(.5) opacity(.9);
+     -webkit-filter: brightness(1.2) grayscale(.5) opacity(.7);
+        -moz-filter: brightness(1.2) grayscale(.5) opacity(.7);
+             filter: brightness(1.2) grayscale(.5) opacity(.7);
  }
+
+ a:link, a:visited {
+    background-color: darkcyan;
+    color: ghostwhite;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: darkslateblue;
+}
