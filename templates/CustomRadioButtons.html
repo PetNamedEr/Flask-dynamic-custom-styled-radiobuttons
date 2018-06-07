@@ -13,16 +13,19 @@
     <div class="container">
       <h2>Custom Radio Buttons</h2>
 
+      <hr>
+
+      <p>Make your selection!</p>
+
+      <!--- adding of new choices. --->
       <form action="/addNewRadioFieldChoice" method="post">
         <input id='newChoice' name='newChoice'>
-        <button type="submit" class="button button2">Add a new choice</button>
-        <!---<a href="/addNewRadioFieldChoice">ADD</a>--->
+        <button type="submit" class="button newChoiceButton">Add a new choice</button>
       </form>
 
       <br><br>
 
       <form action="/" method=post>
-
           <!--- Looping the radio field values and makin
                 the radio fields: --->
           {% for choice in form.value.choices %}
@@ -40,7 +43,9 @@
           <input type="hidden" id='chosenValue' name='chosenValue' value="No choice">
 
           <!--- Post the form: --->
-          <button type="submit" class="button button1">Submit choice</button>
+          <button type="submit" class="button submitButton">Submit choice</button>
+
+          <hr>
       </form>
 
     </div>
