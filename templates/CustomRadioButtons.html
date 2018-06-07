@@ -11,20 +11,38 @@
 
   <body onload="setInitValueOnPageLoad()">
     <div class="container">
-      <h2>My Custom Radio Buttons</h2>
+      <h2>Custom Radio Buttons</h2>
 
-      <form action="{{ form_action_url }}" method=post>
+      <form action="/addNewRadioFieldChoice" method="post">
+        <input id='newChoice' name='newChoice'>
+        <button type="submit" class="button button2">Add a new choice</button>
+        <!---<a href="/addNewRadioFieldChoice">ADD</a>--->
+      </form>
+
+      <br><br>
+
+      <form action="/" method=post>
+
+          <!--- Looping the radio field values and makin
+                the radio fields: --->
           {% for choice in form.value.choices %}
             <div class="cc-selector">
+              <!--- ids for different radio button choices must not be identical.
+                    This is solved by adding the radio button choices index to the id --->
               <input id="myRadioButton{{ choice[0] }}" type="radio" name="usersChoice" value="{{ choice[1] }}" onclick="setAnswerValue({{ choice[0] }})" />
     	        <label class="myRadioButton-cc myRadioButton"for="myRadioButton{{ choice[0] }}">{{ choice[1] }}</label>
               <br><br>
             </div>
           {% endfor %}
 
-          <input id='chosenValue' name='chosenValue' value="You haven't made a choice yet">
+          <!--- At setAnswerValue-function, the program sets value to this hidden field.
+                The value of this hidden field is sent with post --->
+          <input type="hidden" id='chosenValue' name='chosenValue' value="No choice">
 
+          <!--- Post the form: --->
+          <button type="submit" class="button button1">Submit choice</button>
       </form>
+
     </div>
   </body>
 
