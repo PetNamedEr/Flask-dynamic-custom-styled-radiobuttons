@@ -1,0 +1,14 @@
+body {
+  background-color: #262626;
+  color: ghostwhite;
+  text-align: center;
+  font-family: "Bauhaus 93"
+}
+
+.resultText {
+  background-color: deeppink;
+  color: ghostwhite;
+  font-size: 30px;
+  font-family: "Brush Script MT";
+  padding: 15px 30px;
+}

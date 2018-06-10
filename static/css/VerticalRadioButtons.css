@@ -1,0 +1,54 @@
+.cc-selectorHorizontal {
+  display: inline-block;
+  text-align: center;
+}
+
+.cc-selectorHorizontal input {
+  float: left;
+  margin:0;padding:0;
+  -webkit-appearance:none;
+      -moz-appearance:none;
+           appearance:none;
+}
+
+.myHorizontalRadioButton {
+  font-size: 15px;
+  background-color: hotpink;
+  padding: 20px;
+}
+
+
+.cc-selectorHorizontal input:active +.myRadioButtonHorizontal-cc {
+  background-color:blueviolet;
+  opacity: .9;
+}
+
+
+.cc-selectorHorizontal input:checked +.myHorizontalRadioButton-cc {
+  background-color: yellow;
+  color: black;
+   -webkit-filter: none;
+      -moz-filter: none;
+           filter: none;
+}
+
+.myHorizontalRadioButton-cc {
+  float: left;
+  cursor:pointer;
+  background-size:contain;
+  background-repeat:no-repeat;
+  display:block;
+  color: ghostwhite;
+  -webkit-transition: all 100ms ease-in;
+     -moz-transition: all 100ms ease-in;
+          transition: all 100ms ease-in;
+  -webkit-filter: brightness(1.8) opacity(.5);
+     -moz-filter: brightness(1.8) opacity(.5);
+          filter: brightness(1.8) opacity(.5);
+}
+
+.myHorizontalRadioButton-cc:hover{
+  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.7);
+     -moz-filter: brightness(1.2) grayscale(.5) opacity(.7);
+          filter: brightness(1.2) grayscale(.5) opacity(.7);
+}
