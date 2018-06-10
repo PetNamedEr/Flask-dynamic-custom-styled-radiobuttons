@@ -12,18 +12,28 @@ class RadioFieldForm(Form):
             self.value.choices.append((i,choice))
             i += 1
 
-customRadioFieldChoices = ["Paul","John","Ringo","George"]
+customRadioFieldChoicesVertical = ["Paul","John","Ringo","George"]
+customRadioFieldChoicesHorizontal = ["Ben Linus","Claire Littleton","Jack Shepard","Hugo Reyes","Kate Austen","Karen DeGroot",\
+                            "Desmond Hume","Juliet Burke","The Man in Black","Claudia"]
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = RadioFieldForm(request.form)
+    horizontalForm = RadioFieldForm(request.form)
+    verticalForm = RadioFieldForm(request.form)
     if request.method == 'GET':
-        form.setChoices(customRadioFieldChoices)
-        return render_template('CustomRadioButtons.html',form=form)
+        horizontalForm.setChoices(customRadioFieldChoicesHorizontal)
+        verticalForm.setChoices(customRadioFieldChoicesVertical)
+        return render_template('CustomRadioButtons.html',horizontalForm=horizontalForm,verticalForm=verticalForm)
     if request.method == 'POST':
-        return render_template('Results.html',result=request.form['chosenValue'])
+        return render_template('Results.html',horizontalResult=request.form['chosenValueHorizontal'],
+                                verticalResult=request.form['chosenValueVertical'])
 
-@app.route('/addNewRadioFieldChoice', methods=['GET', 'POST'])
-def addCustomRadioFieldChoice():
-    customRadioFieldChoices.append(request.form['newChoice'])
+@app.route('/addNewRadioFieldChoiceHorizontal', methods=['GET', 'POST'])
+def addNewRadioFieldChoiceHorizontal():
+    customRadioFieldChoicesHorizontal.append(request.form['newChoiceHorizontal'])
+    return redirect('/')
+
+@app.route('/addNewRadioFieldChoiceVertical', methods=['GET', 'POST'])
+def addNewRadioFieldChoiceVertical():
+    customRadioFieldChoicesVertical.append(request.form['newChoiceVertical'])
     return redirect('/')

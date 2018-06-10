@@ -2,52 +2,77 @@
   <head>
       <title>Custom Radio Buttons</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/CustomRadioButtons.css') }}">
+
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/VerticalRadioButtons.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/HorizontalRadioButtons.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/SubmitAndNewChoiceButtons.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/Common.css') }}">
 
       <script src="{{ url_for('static',filename='script/CustomRadioButtons.js') }}"></script>
-      <link rel="stylesheet" type="text/css" href="css/CustomRadioButtons.css">
   </head>
 
   <body onload="setInitValueOnPageLoad()">
-    <div class="container">
-      <h2>Custom Radio Buttons</h2>
+    <h2>Custom Radio Buttons</h2>
+    <hr>
 
-      <hr>
+    <!--- adding of new choices. --->
+    <form action="/addNewRadioFieldChoiceVertical" method="post">
+      <input id='newChoiceVertical' name='newChoiceVertical'>
+      <button type="submit" class="button newChoiceButton">Add a new vertical choice</button>
+    </form>
 
-      <p>Make your selection!</p>
+    <br><br>
 
-      <!--- adding of new choices. --->
-      <form action="/addNewRadioFieldChoice" method="post">
-        <input id='newChoice' name='newChoice'>
-        <button type="submit" class="button newChoiceButton">Add a new choice</button>
-      </form>
+    <form action="/" method=post>
+        <!--- Looping the radio field values and makin
+              the radio fields: --->
+        {% for verticalChoice in verticalForm.value.choices %}
+          <div class="cc-selectorVertical">
+            <!--- ids for different radio button choices must not be identical.
+                  This is solved by adding the radio button choices index to the id --->
+            <input id="myRadioButtonVertical{{ verticalChoice[0] }}"
+            type="radio"
+            name="usersChoiceVertical"
+            value="{{ verticalChoice[1] }}"
+            onclick="setAnswerValueVertical({{ verticalChoice[0] }})" />
+  	        <label class="myRadioButtonVertical-cc myRadioButtonVertical"for="myRadioButtonVertical{{ verticalChoice[0] }}">{{ verticalChoice[1] }}</label>
+
+            <br><br>
+          </div>
+        {% endfor %}
+    </form>
+    <hr>
+
+    <!--- adding of new choices. --->
+    <form action="/addNewRadioFieldChoiceHorizontal" method="post">
+      <input id='newChoiceHorizontal' name='newChoiceHorizontal'>
+      <button type="submit" class="button newChoiceButton">Add a new horizontal choice</button>
+    </form>
+
+    <br><br>
+
+    <form action="/" method=post>
+      {% for horizontalChoice in horizontalForm.value.choices %}
+        <div class="cc-selectorHorizontal">
+          <input id="myHorizontalRadioButton{{ horizontalChoice[0] }}"
+          type="radio"
+          name="usersChoiceHorizontal"
+          value="{{ horizontalChoice[1] }}"
+          onclick="setAnswerValueHorizontal({{ horizontalChoice[0] }})" />
+	        <label class="myHorizontalRadioButton-cc myHorizontalRadioButton"for="myHorizontalRadioButton{{ horizontalChoice[0] }}">{{ horizontalChoice[1] }}</label>
+        </div>
+      {% endfor %}
 
       <br><br>
+      <hr>
 
-      <form action="/" method=post>
-          <!--- Looping the radio field values and makin
-                the radio fields: --->
-          {% for choice in form.value.choices %}
-            <div class="cc-selector">
-              <!--- ids for different radio button choices must not be identical.
-                    This is solved by adding the radio button choices index to the id --->
-              <input id="myRadioButton{{ choice[0] }}" type="radio" name="usersChoice" value="{{ choice[1] }}" onclick="setAnswerValue({{ choice[0] }})" />
-    	        <label class="myRadioButton-cc myRadioButton"for="myRadioButton{{ choice[0] }}">{{ choice[1] }}</label>
-              <br><br>
-            </div>
-          {% endfor %}
+      <!--- At js-functions the program sets value to these hidden fields.
+            The values of the fields are sent with post --->
+      <input type="hidden" id='chosenValueVertical' name='chosenValueVertical' value="No choice">
+      <input type="hidden" id='chosenValueHorizontal' name='chosenValueHorizontal' value="No choice">
 
-          <!--- At setAnswerValue-function, the program sets value to this hidden field.
-                The value of this hidden field is sent with post --->
-          <input type="hidden" id='chosenValue' name='chosenValue' value="No choice">
-
-          <!--- Post the form: --->
-          <button type="submit" class="button submitButton">Submit choice</button>
-
-          <hr>
-      </form>
-
-    </div>
+      <!--- Post the form: --->
+      <button type="submit" class="button submitButton">Submit choices</button>
+    </form>
   </body>
-
 </html>
